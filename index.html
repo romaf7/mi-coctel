@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Out - Cóctel de Autor</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #ff4757;
+            --text-color: #ffffff;
+            --text-muted: #a4b0be;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -50px auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid #2f3542;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .recipe-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-section {
+                grid-template-columns: 1fr;
+            }
+            header h1 { font-size: 2.5rem; }
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2f3542;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul li span {
+            color: var(--text-muted);
+        }
+
+        .method-step {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .method-step strong {
+            display: block;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .history-text {
+            font-size: 1.1rem;
+            color: #dcdde1;
+            text-align: justify;
+            white-space: pre-line;
+        }
+
+        .mocktail-badge {
+            background-color: #2ed573;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #2f3542;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Stress Out</h1>
+        <p>El cóctel que te transporta a tus vacaciones deseadas</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- SECCIÓN DE LA HISTORIA -->
+        <section class="card">
+            <h2>La Historia detrás del Trago</h2>
+            <p class="history-text">Este trago nació un viernes, después de una semana muy pesada en el trabajo donde no salía nada bien. Estaba tan estresado que lo único que quería era armar las valijas e irme de vacaciones, pero por razones laborales era imposible pedirme días.
+
+Como no me quedaba otra, decidí despejar la mente armando un trago en casa con las cosas que más me gustaban. Agarré la coctelera y mezclé mis dos bebidas favoritas: vodka y gin. Después le sumé menta (que es mi planta preferida), jugo de limón y, para darle el color rojo que es mi favorito, le agregué un chorro de granadina.
+
+Cuando lo serví y lo empecé a tomar, me relajé tanto que por un momento sentí que estaba de vacaciones en algún lado, olvidándome de los problemas. Por eso le puse "Stress Out", porque literalmente me ayudó a sacarme todo el estrés de la semana.
+
+El trago quedó tan rico que me dieron ganas de repetir la experiencia varios días seguidos. Sin embargo, como eran días laborales, por obvias razones no podía estar tomando alcohol. Así fue como decidí crear la alternativa sin alcohol para poder disfrutarlo en cualquier momento de la semana, bautizándolo <strong>"Stress Out But Not All"</strong>.</p>
+        </section>
+
+        <!-- SECCIÓN DE LA RECETA -->
+        <section class="card">
+            <div class="recipe-section">
+                <div>
+                    <h2>Ingredientes</h2>
+                    <ul>
+                        <li>Vodka <span>1 medida</span></li>
+                        <li>Licor de durazno <span>1 medida</span></li>
+                        <li>Gin <span>1/2 medida</span></li>
+                        <li>Jugo de lima <span>2 medidas</span></li>
+                        <li>Saborizante de menta <span>1 cdta. de café</span></li>
+                        <li>Sprite Zero <span>Para completar</span></li>
+                        <li>Hielo <span>Abundante</span></li>
+                    </ul>
+                    <div class="mocktail-badge">Alternativa: "Stress Out But Not All" (Sin Alcohol)</div>
+                </div>
+
+                <div>
+                    <h2>Método de Preparación</h2>
+                    
+                    <div class="method-step">
+                        <strong>1. Mezcla la base</strong>
+                        En tu vaso de medio litro, pon los alcoholes, la lima y la esencia de menta. Remueve bien.
+                    </div>
+
+                    <div class="method-step">
+                        <strong>2. Llena de hielo hasta el tope</strong>
+                        Pon todo el hielo que quepa. Mucho hielo hace que se enfríe rápido el líquido sin derretirse tanto.
+                    </div>
+
+                    <div class="method-step">
+                        <strong>3. Sirve la Sprite con calma</strong>
+                        Vierte la Sprite Zero a temperatura ambiente muy lentamente sobre los hielos. Si la echas rápido, la espuma subirá demasiado y perderá el gas por el choque térmico.
+                    </div>
+
+                    <div class="method-step">
+                        <strong>4. El toque final</strong>
+                        Vas a ver que el hielo del principio bajará de volumen porque se va a derretir un poco para enfriar la Sprite. Agrega un par de cubos más arriba para mantener el trago helado mientras te lo tomas.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Stress Out - Cóctel de Autor. Bebe con moderación.</p>
+    </footer>
+
+</body>
+</html>
