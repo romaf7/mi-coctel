@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stress Out - Cóctel de Autor</title>
+    <title>Stress Out & Stress Out But Not All - Cóctel de Autor</title>
     <style>
         :root {
-            --bg-principal: #090d10; /* Fondo oscuro estilo bar */
-            --bg-tarjeta: #131a22;    /* Contenedores para organizar la info */
-            --verde-lima: #a3e635;    /* Toque cítrico y fresco */
-            --verde-menta: #2ed573;   
-            --texto-claro: #f3f4f6;   
-            --texto-mutado: #9ca3af;  
+            --bg-principal: #0a0e12; 
+            --bg-tarjeta: #12181f;    
+            --verde-citrico: #bfff00; /* Color lima/menta vibrante */
+            --texto-claro: #f8fafc;   
+            --texto-mutado: #94a3b8;  
+            --borde-sutil: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -21,117 +21,158 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             background-color: var(--bg-principal);
             color: var(--texto-claro);
             line-height: 1.6;
             padding: 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .contenedor {
-            max-width: 1050px;
-            margin: 30px auto;
+            max-width: 1100px;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         header h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, var(--texto-claro), var(--verde-lima));
+            font-size: 3.8rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--verde-citrico));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
         }
 
         header p {
             color: var(--texto-mutado);
             font-size: 1.1rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
 
-        .grid-contenido {
+        /* Diseño de tres columnas: Imagen | Receta | Ficha Técnica */
+        .layout-web {
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 40px;
-            align-items: start;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
         }
 
-        /* Contenedor que aísla y resalta tu foto local */
+        .columna-izquierda {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Contenedor de imagen optimizado */
         .bloque-imagen {
             position: relative;
-            background: linear-gradient(135deg, rgba(163, 230, 53, 0.08), rgba(46, 213, 115, 0.03));
+            background: linear-gradient(135deg, rgba(191, 255, 0, 0.05), rgba(255, 255, 255, 0.01));
             padding: 20px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            border: 1px solid var(--borde-sutil);
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
-        /* Aura cítrica detrás del trago */
+        /* Resplandor cítrico detrás de Trago_2.jpeg */
         .bloque-imagen::before {
             content: '';
             position: absolute;
-            width: 180px;
-            height: 180px;
-            background: var(--verde-lima);
-            filter: blur(80px);
-            opacity: 0.15;
+            width: 200px;
+            height: 200px;
+            background: var(--verde-citrico);
+            filter: blur(90px);
+            opacity: 0.12;
             z-index: -1;
         }
 
         .bloque-imagen img {
             width: 100%;
-            max-width: 360px;
+            max-width: 340px;
             height: auto;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             display: block;
             object-fit: cover;
         }
 
-        .bloque-info {
+        /* Ficha Técnica Estilo Minimalista */
+        .ficha-tecnica {
+            background-color: var(--bg-tarjeta);
+            border-radius: 24px;
+            padding: 25px;
+            border: 1px solid var(--borde-sutil);
+        }
+
+        .ficha-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .ficha-item {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+        }
+
+        .ficha-item span.label {
+            font-size: 0.8rem;
+            color: var(--texto-mutado);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ficha-item span.valor {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-claro);
+        }
+
+        /* Bloques de Información Principal */
+        .columna-derecha {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .tarjeta {
             background-color: var(--bg-tarjeta);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 35px;
+            border-radius: 24px;
+            border: 1px solid var(--borde-sutil);
         }
 
         h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
             color: var(--texto-claro);
-            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        h2::before {
+        h2::after {
             content: '';
-            display: inline-block;
-            width: 4px;
-            height: 18px;
-            background-color: var(--verde-lima);
-            border-radius: 4px;
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
         }
 
         .historia-texto {
             color: var(--texto-mutado);
-            font-size: 1rem;
+            font-size: 1.05rem;
             white-space: pre-line;
+            text-align: justify;
         }
 
         .lista-ingredientes {
@@ -141,50 +182,61 @@
         .lista-ingredientes li {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 1.1rem;
         }
 
         .lista-ingredientes li span:last-child {
-            color: var(--verde-lima);
+            color: var(--verde-citrico);
             font-weight: 600;
         }
 
         .pasos-preparacion {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-        }
-
-        .paso {
-            font-size: 1rem;
-            color: var(--texto-mutado);
+            gap: 20px;
         }
 
         .paso strong {
-            color: var(--texto-claro);
+            color: var(--verde-citrico);
+            font-size: 1.1rem;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
-        .badge-mocktail {
-            display: inline-block;
+        .paso p {
+            color: var(--texto-mutado);
+            font-size: 1rem;
+        }
+
+        /* Sección Maridaje Sugerido */
+        .maridaje-box {
+            background: linear-gradient(to right, rgba(191, 255, 0, 0.03), transparent);
+            border-left: 3px solid var(--verde-citrico);
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
             margin-top: 20px;
-            background-color: rgba(46, 213, 115, 0.1);
-            color: var(--verde-menta);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(46, 213, 115, 0.15);
         }
 
-        @media (max-width: 850px) {
-            .grid-contenido {
+        .badge-subtitulo {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--verde-citrico);
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 900px) {
+            .layout-web {
                 grid-template-columns: 1fr;
             }
             header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
         }
     </style>
@@ -195,19 +247,47 @@
         
         <header>
             <h1>Stress Out</h1>
-            <p>Cóctel de Autor • Frescura Cítrica</p>
+            <p>Cóctel de Autor de Perfil Cítrico</p>
         </header>
 
-        <div class="grid-contenido">
+        <div class="layout-web">
             
-            <!-- CONTENEDOR PARA TU IMAGEN LOCAL -->
-            <div class="bloque-imagen">
-                <img src="./Trago_2.jpeg" alt="Cóctel de autor Stress Out con hielo y menta fresca">
+            <!-- COLUMNA IZQUIERDA: VISUAL Y DATOS TÉCNICOS -->
+            <div class="columna-izquierda">
+                
+                <!-- Tu imagen local en ./Trago_2.jpeg -->
+                <div class="bloque-imagen">
+                    <img src="./Trago_2.jpeg" alt="Cóctel de autor Stress Out presentado en vaso Highball">
+                </div>
+
+                <!-- FICHA TÉCNICA -->
+                <section class="ficha-tecnica">
+                    <div class="ficha-grid">
+                        <div class="ficha-item">
+                            <span class="label">Método</span>
+                            <span class="valor">Directo</span>
+                        </div>
+                        <div class="ficha-item">
+                            <span class="label">Cristalería</span>
+                            <span class="valor">Vaso Highball</span>
+                        </div>
+                        <div class="ficha-item">
+                            <span class="label">Tipo</span>
+                            <span class="valor">Digestivo</span>
+                        </div>
+                        <div class="ficha-item">
+                            <span class="label">Variante</span>
+                            <span class="valor" style="font-size: 0.9rem;">But Not All (Sin Alc.)</span>
+                        </div>
+                    </div>
+                </section>
+
             </div>
 
-            <!-- COLUMNA DE INFORMACIÓN -->
-            <div class="bloque-info">
+            <!-- COLUMNA DERECHA: TEXTOS, RECETA Y MARIDAJE -->
+            <div class="columna-derecha">
                 
+                <!-- LA HISTORIA -->
                 <section class="tarjeta">
                     <h2>La Historia</h2>
                     <p class="historia-texto">Este trago nació un viernes, después de una semana muy pesada en el trabajo donde no salía nada bien. Estaba tan estresado que lo único que quería era armar las valijas e irme de vacaciones, pero por razones laborales era imposible pedirme días.
@@ -219,37 +299,50 @@ Cuando lo serví y lo empecé a tomar, me relajé tanto que por un momento sent�
 El trago quedó tan rico que me dieron ganas de repetir la experiencia varios días seguidos. Sin embargo, como eran días laborales, por obvias razones no podía estar tomando alcohol. Así fue como decidí crear la alternativa sin alcohol para poder disfrutarlo en cualquier momento de la semana, bautizándolo <strong>"Stress Out But Not All"</strong>.</p>
                 </section>
 
+                <!-- INGREDIENTES -->
                 <section class="tarjeta">
                     <h2>Ingredientes</h2>
+                    <div class="badge-subtitulo">Receta Oficial (en Onzas)</div>
                     <ul class="lista-ingredientes">
-                        <li><span>Vodka</span> <span>1 medida</span></li>
-                        <li><span>Licor de durazno</span> <span>1 medida</span></li>
-                        <li><span>Gin</span> <span>1/2 medida</span></li>
-                        <li><span>Jugo de lima</span> <span>2 medidas</span></li>
-                        <li><span>Saborizante de menta</span> <span>1 cdta. de café</span></li>
+                        <li><span>Vodka</span> <span>1 oz</span></li>
+                        <li><span>Licor de durazno</span> <span>1 oz</span></li>
+                        <li><span>Gin</span> <span>0.5 oz</span></li>
+                        <li><span>Jugo de lima</span> <span>2 oz</span></li>
+                        <li><span>Saborizante de menta</span> <span>1 tsp (cdta. café)</span></li>
+                        <li><span>Sprite Zero</span> <span>Para completar</span></li>
                     </ul>
-                    <div class="badge-mocktail">Alternativa de semana: "Stress Out But Not All" (Sin Alcohol)</div>
                 </section>
 
+                <!-- PREPARACIÓN -->
                 <section class="tarjeta">
-                    <h2>Preparación</h2>
+                    <h2>Método de Elaboración</h2>
                     <div class="pasos-preparacion">
                         <div class="paso">
-                            <strong>1. Mezcla la base</strong>
-                            En tu vaso de medio litro, pon los alcoholes, la lima y la esencia de menta. Remueve bien.
+                            <strong>1. Construcción de la base</strong>
+                            <p>Directo en tu vaso Highball de medio litro, añade los alcoholes (vodka, licor de durazno, gin), el jugo de lima y el saborizante de menta. Remueve bien para integrar los sabores cítricos y herbáceos.</p>
                         </div>
                         <div class="paso">
-                            <strong>2. Llena de hielo hasta el tope</strong>
-                            Pon todo el hielo que quepa. Mucho hielo hace que se enfríe rápido el líquido sin derretirse tanto.
+                            <strong>2. Control térmico</strong>
+                            <p>Llena el vaso con todo el hielo que quepa hasta el tope. La abundancia de hielo asegura que el líquido se enfríe de golpe sin llegar a diluirse rápido.</p>
                         </div>
                         <div class="paso">
-                            <strong>3. Sirve la Sprite con calma</strong>
-                            Vierte la Sprite Zero a temperatura ambiente muy lentamente sobre los hielos. Si la echas rápido, la espuma subirá demasiado y perderá el gas por el choque térmico.
+                            <strong>3. Servicio y gasificación</strong>
+                            <p>Vierte la Sprite Zero (a temperatura ambiente) de manera muy lenta sobre los hielos. Hacerlo despacio evita el exceso de espuma y la pérdida de gas por choque térmico.</p>
                         </div>
                         <div class="paso">
-                            <strong>4. Agrega más hielo al final</strong>
-                            Vas a ver que el hielo del principio bajará de volumen porque se va a derretir un poco para enfriar la Sprite. Agrega un par de cubos más arriba para mantener el trago helado mientras te lo tomas.
+                            <strong>4. Ajuste final</strong>
+                            <p>Notarás que el hielo inicial bajará su volumen al enfriar la gaseosa. Corona agregando un par de cubos extra arriba para mantener el trago helado de principio a fin.</p>
                         </div>
+                    </div>
+                </section>
+
+                <!-- MARIDAJE SUGERIDO -->
+                <section class="tarjeta">
+                    <h2>Maridaje Sugerido</h2>
+                    <p style="color: var(--texto-mutado);">Debido a su perfil cítrico, refrescante y sus propiedades digestivas, este cóctel es perfecto para acompañar comidas que contrasten su acidez:</p>
+                    <div class="maridaje-box">
+                        <span style="font-weight: 700; color: var(--texto-claro); display: block; margin-bottom: 3px;">La Picada Ideal</span>
+                        <p style="color: var(--texto-mutado); font-size: 0.95rem;">Quesos (semiduros o maduros), salames, fiambres selectos y frutos secos. La grasa noble de los quesos y embutidos se limpia perfectamente en boca gracias a la acidez de la lima y el toque burbujeante de la Sprite.</p>
                     </div>
                 </section>
 
