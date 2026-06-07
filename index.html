@@ -6,16 +6,14 @@
     <title>Stress Out - Cóctel de Autor</title>
     <style>
         :root {
-            --blanco-fondo: #ffffff;
-            --verde-menta: #e0f2f1;
-            --amarillo-citrico: #fff9c4;
-            --texto-principal: #333333;
-            --texto-resaltado: #1a1a1a;
-            --fuente-titulos: 'Playfair Display', serif;
-            --fuente-cuerpo: 'Roboto', sans-serif;
+            --bg-principal: #0b0f12; /* Fondo oscuro profundo, inspirado en noches de bar */
+            --bg-tarjeta: #161d24;    /* Gris azulado oscuro para contraste */
+            --verde-lima: #a3e635;    /* Toque cítrico brillante */
+            --verde-menta: #2ed573;   /* Toque fresco */
+            --texto-claro: #f3f4f6;   /* Blanco suave para no cansar la vista */
+            --texto-mutado: #9ca3af;  /* Gris claro para detalles */
         }
 
-        /* Reset básico para simplificar */
         * {
             margin: 0;
             padding: 0;
@@ -23,225 +21,141 @@
         }
 
         body {
-            font-family: var(--fuente-cuerpo);
-            background-color: var(--blanco-fondo);
-            color: var(--texto-principal);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* Estilo general de los contenedores */
-        .contenedor {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Título principal */
-        h1.titulo-principal {
-            font-family: var(--fuente-titulos);
-            font-size: 3rem;
-            text-align: center;
-            color: var(--texto-resaltado);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-family: var(--fuente-titulos);
-            font-size: 1.8rem;
-            color: var(--texto-resaltado);
-            margin-bottom: 15px;
-            text-transform: capitalize;
-        }
-
-        /* Sección de la historia */
-        .seccion-historia {
-            background-color: var(--blanco-fondo);
-            border-radius: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-claro);
+            line-height: 1.6;
             padding: 20px;
-            margin-bottom: 40px;
-            text-align: center;
-            font-style: italic;
-            color: #555;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* Presentación del trago */
-        .presentacion-trago {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
+        .contenedor {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
             margin-bottom: 50px;
         }
 
-        .imagen-trago {
-            flex: 1;
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--texto-claro), var(--verde-lima));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--texto-mutado);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Cuadrícula principal */
+        .grid-contenido {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Contenedor especial para la imagen (Garantiza accesibilidad y resalta el trago) */
+        .bloque-imagen {
+            position: relative;
+            background: linear-gradient(135deg, rgba(163, 230, 53, 0.1), rgba(46, 213, 115, 0.05));
+            padding: 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
-            position: relative;
+            align-items: center;
         }
 
-        /* Círculos de color cítrico de fondo */
-        .imagen-trago::before, .imagen-trago::after {
+        /* Brillo cítrico de fondo detrás de la foto */
+        .bloque-imagen::before {
             content: '';
             position: absolute;
-            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            background: var(--verde-lima);
+            filter: blur(80px);
+            opacity: 0.2;
             z-index: -1;
+            top: 10%;
         }
 
-        .imagen-trago::before {
-            width: 300px;
-            height: 300px;
-            background-color: var(--verde-menta);
-            top: -30px;
-            left: -40px;
-        }
-
-        .imagen-trago::after {
-            width: 250px;
-            height: 250px;
-            background-color: var(--amarillo-citrico);
-            bottom: -20px;
-            right: -30px;
-        }
-
-        .imagen-trago img {
-            max-width: 100%;
+        .bloque-imagen img {
+            width: 100%;
+            max-width: 380px;
             height: auto;
-            /* Se aplica un recorte para eliminar el fondo de cocina */
-            border-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            display: block;
         }
 
-        .detalles-receta {
-            flex: 1.2;
+        /* Bloques de texto */
+        .bloque-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
-        /* Lista de ingredientes */
+        .tarjeta {
+            background-color: var(--bg-tarjeta);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--texto-claro);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background-color: var(--verde-lima);
+            border-radius: 4px;
+        }
+
+        .historia-texto {
+            color: var(--texto-mutado);
+            font-size: 1.05rem;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        /* Lista de Ingredientes Estilizada */
         .lista-ingredientes {
-            list-style-type: none;
-            margin-bottom: 30px;
+            list-style: none;
         }
 
         .lista-ingredientes li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
         }
 
-        .lista-ingredientes li span {
-            font-weight: bold;
+        .lista-ingredientes li span:last-child {
+            color: var(--verde-lima);
+            font-weight: 600;
         }
 
-        /* Sección de preparación */
-        .preparacion p {
-            margin-bottom: 15px;
-        }
-
-        .preparacion strong {
-            color: var(--texto-resaltado);
-        }
-
-        /* Botón de la variante sin alcohol */
-        .variante-sin-alcohol {
-            display: block;
-            text-align: center;
-            background-color: var(--verde-menta);
-            color: #2e7d32;
-            padding: 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 30px;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: background-color 0.3s;
-        }
-
-        .variante-sin-alcohol:hover {
-            background-color: #c8e6c9;
-        }
-
-        /* Decoración de fondo cítrica simplista */
-        .decoracion-citrica {
-            position: fixed;
-            z-index: -2;
-            opacity: 0.1;
-        }
-
-        .lima { top: 10%; left: 5%; width: 100px; }
-        .menta { bottom: 15%; right: 5%; width: 80px; }
-
-        /* Media Queries para Responsividad */
-        @media (max-width: 768px) {
-            h1.titulo-principal { font-size: 2.2rem; }
-            .presentacion-trago {
-                flex-direction: column;
-                text-align: center;
-            }
-            .lista-ingredientes li {
-                justify-content: center;
-                gap: 15px;
-            }
-            .imagen-trago::before, .imagen-trago::after {
-                display: none; /* Simplificar en móviles */
-            }
-        }
-    </style>
-    <!-- Importación de fuentes de Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-    <!-- Decoraciones de fondo cítricas (simplistas, transparentes) -->
-    <img src="https://image.shutterstock.com/image-vector/lemon-slice-outline-vector-icon-600w-1725595514.jpg" class="decoracion-citrica lima" alt="Decoración de Lima">
-    <img src="https://image.shutterstock.com/image-vector/mint-leaf-outline-vector-icon-600w-1725595511.jpg" class="decoracion-citrica menta" alt="Decoración de Menta">
-
-    <div class="contenedor">
-        <h1 class="titulo-principal">Stress Out</h1>
-
-        <div class="seccion-historia">
-            <p>Este trago nació un viernes, después de una semana pesada en el trabajo. Estaba tan estresado que solo quería mis vacaciones, pero no podía pedirme días.</p>
-            <p>Me decidí despejar la mente armando un trago en casa con vodka, gin, menta fresca, jugo de limón y granadina. El trago quedó tan rico que decidí crear también la alternativa sin alcohol: "Stress Out But Not All".</p>
-        </div>
-
-        <div class="presentacion-trago">
-            <div class="imagen-trago">
-                <!-- Se ha aplicado un recorte limpio para enfocar solo el trago -->
-                <img src="https://i.imgur.com/8QdYvH8.jpeg" alt="Trago Stress Out - Foto de referencia Trago_2.jpeg">
-            </div>
-
-            <div class="detalles-receta">
-                <h2>Receta con alcohol</h2>
-                <ul class="lista-ingredientes">
-                    <li>Vodka <span>1 medida</span></li>
-                    <li>Licor de durazno <span>1 medida</span></li>
-                    <li>Gin <span>1/2 medida</span></li>
-                    <li>Jugo de lima <span>2 medidas</span></li>
-                    <li>Saborizante de menta <span>1 cda. café</span></li>
-                    <li>Sprite Zero <span>C.S.</span></li>
-                </ul>
-
-                <h2>Método de preparación</h2>
-                <div class="preparacion">
-                    <p><strong>Mezcla la base:</strong> En tu vaso de medio litro, pon los alcoholes, la lima y la esencia de menta. Remueve bien.</p>
-                    <p><strong>Llena de hielo hasta el tope:</strong> Pon todo el hielo que quepa. Mucho hielo hace que se enfríe rápido el líquido sin derretirse tanto.</p>
-                    <p><strong>Sirve la Sprite con calma:</strong> Vierte la Sprite Zero a temperatura ambiente muy lentamente sobre los hielos. Si la echas rápido, la espuma subirá demasiado y perderá el gas.</p>
-                    <p><strong>Agrega más hielo al final:</strong> Vas a ver que el hielo del principio bajará de volumen. Agrega un par de cubos más arriba para mantener el trago helado.</p>
-                </div>
-
-                <a href="#" class="variante-sin-alcohol">Ver variante "Stress Out But Not All" (Sin Alcohol)</a>
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>
+        /* Pasos de preparación simplistas */
+        .pasos-preparacion {
+            display: flex;
