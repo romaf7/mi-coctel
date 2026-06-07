@@ -6,12 +6,12 @@
     <title>Stress Out - Cóctel de Autor</title>
     <style>
         :root {
-            --bg-principal: #0b0f12; /* Fondo oscuro profundo, inspirado en noches de bar */
-            --bg-tarjeta: #161d24;    /* Gris azulado oscuro para contraste */
-            --verde-lima: #a3e635;    /* Toque cítrico brillante */
-            --verde-menta: #2ed573;   /* Toque fresco */
-            --texto-claro: #f3f4f6;   /* Blanco suave para no cansar la vista */
-            --texto-mutado: #9ca3af;  /* Gris claro para detalles */
+            --bg-principal: #090d10; /* Fondo oscuro estilo bar */
+            --bg-tarjeta: #131a22;    /* Contenedores para organizar la info */
+            --verde-lima: #a3e635;    /* Toque cítrico y fresco */
+            --verde-menta: #2ed573;   
+            --texto-claro: #f3f4f6;   
+            --texto-mutado: #9ca3af;  
         }
 
         * {
@@ -21,7 +21,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-principal);
             color: var(--texto-claro);
             line-height: 1.6;
@@ -29,14 +29,14 @@
         }
 
         .contenedor {
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 1050px;
+            margin: 30px auto;
             padding: 0 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         header h1 {
@@ -46,7 +46,7 @@
             background: linear-gradient(to right, var(--texto-claro), var(--verde-lima));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         header p {
@@ -55,18 +55,17 @@
             letter-spacing: 1px;
         }
 
-        /* Cuadrícula principal */
         .grid-contenido {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.3fr;
             gap: 40px;
             align-items: start;
         }
 
-        /* Contenedor especial para la imagen (Garantiza accesibilidad y resalta el trago) */
+        /* Contenedor que aísla y resalta tu foto local */
         .bloque-imagen {
             position: relative;
-            background: linear-gradient(135deg, rgba(163, 230, 53, 0.1), rgba(46, 213, 115, 0.05));
+            background: linear-gradient(135deg, rgba(163, 230, 53, 0.08), rgba(46, 213, 115, 0.03));
             padding: 20px;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -76,47 +75,45 @@
             align-items: center;
         }
 
-        /* Brillo cítrico de fondo detrás de la foto */
+        /* Aura cítrica detrás del trago */
         .bloque-imagen::before {
             content: '';
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             background: var(--verde-lima);
             filter: blur(80px);
-            opacity: 0.2;
+            opacity: 0.15;
             z-index: -1;
-            top: 10%;
         }
 
         .bloque-imagen img {
             width: 100%;
-            max-width: 380px;
+            max-width: 360px;
             height: auto;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             display: block;
+            object-fit: cover;
         }
 
-        /* Bloques de texto */
         .bloque-info {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
 
         .tarjeta {
             background-color: var(--bg-tarjeta);
-            padding: 35px;
+            padding: 30px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--texto-claro);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -125,20 +122,18 @@
         h2::before {
             content: '';
             display: inline-block;
-            width: 6px;
-            height: 20px;
+            width: 4px;
+            height: 18px;
             background-color: var(--verde-lima);
             border-radius: 4px;
         }
 
         .historia-texto {
             color: var(--texto-mutado);
-            font-size: 1.05rem;
-            text-align: left;
+            font-size: 1rem;
             white-space: pre-line;
         }
 
-        /* Lista de Ingredientes Estilizada */
         .lista-ingredientes {
             list-style: none;
         }
@@ -146,9 +141,8 @@
         .lista-ingredientes li {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 1.1rem;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .lista-ingredientes li span:last-child {
@@ -156,6 +150,114 @@
             font-weight: 600;
         }
 
-        /* Pasos de preparación simplistas */
         .pasos-preparacion {
             display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .paso {
+            font-size: 1rem;
+            color: var(--texto-mutado);
+        }
+
+        .paso strong {
+            color: var(--texto-claro);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .badge-mocktail {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: rgba(46, 213, 115, 0.1);
+            color: var(--verde-menta);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(46, 213, 115, 0.15);
+        }
+
+        @media (max-width: 850px) {
+            .grid-contenido {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        
+        <header>
+            <h1>Stress Out</h1>
+            <p>Cóctel de Autor • Frescura Cítrica</p>
+        </header>
+
+        <div class="grid-contenido">
+            
+            <!-- CONTENEDOR PARA TU IMAGEN LOCAL -->
+            <div class="bloque-imagen">
+                <img src="./Trago_2.jpeg" alt="Cóctel de autor Stress Out con hielo y menta fresca">
+            </div>
+
+            <!-- COLUMNA DE INFORMACIÓN -->
+            <div class="bloque-info">
+                
+                <section class="tarjeta">
+                    <h2>La Historia</h2>
+                    <p class="historia-texto">Este trago nació un viernes, después de una semana muy pesada en el trabajo donde no salía nada bien. Estaba tan estresado que lo único que quería era armar las valijas e irme de vacaciones, pero por razones laborales era imposible pedirme días.
+
+Como no me quedaba otra, decidí despejar la mente armando un trago en casa con las cosas que más me gustaban. Agarré la coctelera y mezclé mis dos bebidas favoritas: vodka y gin. Después le sumé menta (que es mi planta preferida), jugo de limón y, para darle el color rojo que es mi favorito, le agregué un chorro de granadina.
+
+Cuando lo serví y lo empecé a tomar, me relajé tanto que por un momento sentí que estaba de vacaciones en algún lado, olvidándome de los problemas. Por eso le puse "Stress Out", porque literalmente me ayudó a sacarme todo el estrés de la semana.
+
+El trago quedó tan rico que me dieron ganas de repetir la experiencia varios días seguidos. Sin embargo, como eran días laborales, por obvias razones no podía estar tomando alcohol. Así fue como decidí crear la alternativa sin alcohol para poder disfrutarlo en cualquier momento de la semana, bautizándolo <strong>"Stress Out But Not All"</strong>.</p>
+                </section>
+
+                <section class="tarjeta">
+                    <h2>Ingredientes</h2>
+                    <ul class="lista-ingredientes">
+                        <li><span>Vodka</span> <span>1 medida</span></li>
+                        <li><span>Licor de durazno</span> <span>1 medida</span></li>
+                        <li><span>Gin</span> <span>1/2 medida</span></li>
+                        <li><span>Jugo de lima</span> <span>2 medidas</span></li>
+                        <li><span>Saborizante de menta</span> <span>1 cdta. de café</span></li>
+                    </ul>
+                    <div class="badge-mocktail">Alternativa de semana: "Stress Out But Not All" (Sin Alcohol)</div>
+                </section>
+
+                <section class="tarjeta">
+                    <h2>Preparación</h2>
+                    <div class="pasos-preparacion">
+                        <div class="paso">
+                            <strong>1. Mezcla la base</strong>
+                            En tu vaso de medio litro, pon los alcoholes, la lima y la esencia de menta. Remueve bien.
+                        </div>
+                        <div class="paso">
+                            <strong>2. Llena de hielo hasta el tope</strong>
+                            Pon todo el hielo que quepa. Mucho hielo hace que se enfríe rápido el líquido sin derretirse tanto.
+                        </div>
+                        <div class="paso">
+                            <strong>3. Sirve la Sprite con calma</strong>
+                            Vierte la Sprite Zero a temperatura ambiente muy lentamente sobre los hielos. Si la echas rápido, la espuma subirá demasiado y perderá el gas por el choque térmico.
+                        </div>
+                        <div class="paso">
+                            <strong>4. Agrega más hielo al final</strong>
+                            Vas a ver que el hielo del principio bajará de volumen porque se va a derretir un poco para enfriar la Sprite. Agrega un par de cubos más arriba para mantener el trago helado mientras te lo tomas.
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
